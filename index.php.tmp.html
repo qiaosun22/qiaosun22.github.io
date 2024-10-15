@@ -15,56 +15,90 @@
     fclose($fp);
     ?-->
   
-    <?php
-    $showtime = date("Y-m-d H:i:s");
-    $fangwen = "访问者IP:";
-    $fangwentime = "访问时间:";
-    $ips = $_SERVER['REMOTE_ADDR'];
+    <!--?php
+    // $showtime = date("Y-m-d H:i:s");
+    // $fangwen = "访问者IP:";
+    // $fangwentime = "访问时间:";
+    // $ips = $_SERVER['REMOTE_ADDR'];
     
-    // 设置调试模式，生产环境中将其设置为 false
-    $debug = false;
+    // // 设置调试模式，生产环境中将其设置为 false
+    // $debug = false;
     
-    // 使用提供的 API 查询 IP 归属地信息
-    $apiKey = 'jDLz5WWtKBwELhHObulLbf3YUO8XsTWtYls5sT8SRAHFwUZl0zy2DT8yA5vrIqyT'; // 你的 API key
-    $apiUrl = "https://api.ipplus360.com/ip/geo/v1/city/?key=$apiKey&ip=$ips&coordsys=WGS84"; // 使用提供的 API
+    // // 使用提供的 API 查询 IP 归属地信息
+    // $apiKey = 'jDLz5WWtKBwELhHObulLbf3YUO8XsTWtYls5sT8SRAHFwUZl0zy2DT8yA5vrIqyT'; // 你的 API key
+    // $apiUrl = "https://api.ipplus360.com/ip/geo/v1/city/?key=$apiKey&ip=$ips&coordsys=WGS84"; // 使用提供的 API
     
-    $location = file_get_contents($apiUrl);
-    $locationData = json_decode($location, true);
+    // $location = file_get_contents($apiUrl);
+    // $locationData = json_decode($location, true);
     
-    if ($debug) {
-    // 调试信息：输出API返回的数据
-    echo "<pre>";
-      print_r($locationData);
-      echo "</pre>";
-    }
+    // if ($debug) {
+    // // 调试信息：输出API返回的数据
+    // echo "<pre>";
+    //   print_r($locationData);
+    //   echo "</pre>";
+    // }
     
-    if ($locationData && isset($locationData['data'])) {
-    $continent = $locationData['data']['continent'] ?? '未知大陆';
-    $country = $locationData['data']['country'] ?? '未知国家';
-    $province = $locationData['data']['prov'] ?? '未知省份';
-    $city = $locationData['data']['city'] ?? '未知城市';
-    $locationInfo = "$continent, $country, $province, $city";
-    } else {
-    $locationInfo = "未知地点";
-    }
+    // if ($locationData && isset($locationData['data'])) {
+    // $continent = $locationData['data']['continent'] ?? '未知大陆';
+    // $country = $locationData['data']['country'] ?? '未知国家';
+    // $province = $locationData['data']['prov'] ?? '未知省份';
+    // $city = $locationData['data']['city'] ?? '未知城市';
+    // $locationInfo = "$continent, $country, $province, $city";
+    // } else {
+    // $locationInfo = "未知地点";
+    // }
     
-    if ($debug) {
-    // 调试信息：输出解析后的位置信息
-    echo "IP: $ips<br>";
-    echo "Location Info: $locationInfo<br>";
-    }
+    // if ($debug) {
+    // // 调试信息：输出解析后的位置信息
+    // echo "IP: $ips<br>";
+    // echo "Location Info: $locationInfo<br>";
+    // }
     
-    $file = "/www/wwwroot/www.josphersun.ink/access_log.txt"; // 确保路径和权限设置正确
-    $fp = fopen($file, "a");
-    if ($fp) {
-    $txt = "$fangwen $ips ---- 归属地: $locationInfo ---- $fangwentime $showtime\n"; // 添加归属地信息
-    fputs($fp, $txt);
-    fclose($fp); // 关闭文件
-    } else {
-    echo "Failed to open file for writing.";
-    }
-    ?>
+    // $file = "/www/wwwroot/www.josphersun.ink/access_log.txt"; // 确保路径和权限设置正确
+    // $fp = fopen($file, "a");
+    // if ($fp) {
+    // $txt = "$fangwen $ips ---- 归属地: $locationInfo ---- $fangwentime $showtime\n"; // 添加归属地信息
+    // fputs($fp, $txt);
+    // fclose($fp); // 关闭文件
+    // } else {
+    // echo "Failed to open file for writing.";
+    // }
+    // ?-->
 
+    <script>
+        // 记录用户进入页面的时间
+        let startTime = new Date();
+        let totalVisibleTime = 0;
+        let visibilityStartTime;
+
+        // 处理页面可见性变化事件
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                visibilityStartTime = new Date();
+            } else if (document.visibilityState === 'hidden') {
+                if (visibilityStartTime) {
+                    totalVisibleTime += new Date() - visibilityStartTime;
+                }
+            }
+        });
+
+        // 记录用户离开页面的时间并计算停留时间
+        window.addEventListener('beforeunload', () => {
+            if (document.visibilityState === 'visible' && visibilityStartTime) {
+                totalVisibleTime += new Date() - visibilityStartTime;
+            }
+            const endTime = new Date();
+            const timeSpent = endTime - startTime; // 毫秒数
+            const timeSpentSeconds = Math.round(timeSpent / 1000); // 转换为秒
+            const totalVisibleTimeSeconds = Math.round(totalVisibleTime / 1000); // 转换为秒
+
+            // 创建AJAX请求
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "log_time.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send(`timeSpent=${timeSpentSeconds}&visibleTime=${totalVisibleTimeSeconds}`);
+        });
+    </script>
 
 
 
@@ -226,7 +260,7 @@ img.emoji {
 
 <h3 style="text-align:center">Current Progress</h3>
 
-<p>Update as of June 17, 2024: </p>
+<p>Update as of June 28, 2024: </p>
 
     <ul>
       <li>
@@ -512,6 +546,30 @@ parts: manually annotated data and synthetic data. Link: <a href="./index_files/
       <div class="ctl-instant-timeline block-1602808466351 one-sided" style="--timeLineColor:#D91B3E;--textColor:#000;--titleSize:15px;--descriptionSize:12px;--timeSize:12px">
         <div class="timeline-content">
 
+
+          <div class="ctl-row">
+            <div class="ctl-col-6">
+              <div class="story-time" style="color:#000;font-size:12px">
+                June, 2024<br><br>
+                PI: <a href="https://ynysjtu.github.io/">Prof. Shijie Guo</a><br><br>
+                <em>Academy of Engineering & Technology, Fudan University</em>
+              </div>
+            </div>
+            <div class="ctl-col-6">
+              <div class="story-details">
+                <div class="story-image">
+                  <img src="./index_files/screenshot-0628_Interim_Defence.png">
+                </div>
+                <h3 style="color:#000;font-size:15px;line-height:20.1px">Design and Implementation of an Embodied Intelligent Agent for Nursing Robots Using Multimodal Large Models to Enhance Patient Care and Interaction. </h3>
+                <p style="color:#000;font-size:12px;line-height:20.76px">
+                  <em>Contribution to the AI Health Care. Towards more informed LLM Agents!</em><br>
+                  <a href="./index_files/0628_Interim_Defence.pdf">Presentation</a><br>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          
           <div class="ctl-row">
             <div class="ctl-col-6">
               <div class="story-time" style="color:#000;font-size:12px">
