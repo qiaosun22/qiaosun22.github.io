@@ -1,0 +1,228 @@
+/* Section Header 初始状态 */
+.section-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+/* Section Header 动画触发状态 */
+.section-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 列表项初始状态 */
+.list-group li {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+/* 列表项动画触发状态 */
+.list-group li.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f7fa;
+}
+
+/* Hero Section Animation */
+.hero h1, .hero p, .hero .btn {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+.hero p:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.hero .btn {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section Header Animation */
+.section-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+.section-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section Avatar */
+.hero-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-bottom: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Education Section Logos */
+.edu-logo {
+  width: 50px; /* 校徽宽度 */
+  height: 50px; /* 校徽高度 */
+  border-radius: 5px; /* 圆角可选 */
+  margin-right: 15px; /* 图片与文字的间距 */
+  vertical-align: middle; /* 图片与文字垂直居中 */
+  object-fit: contain; /* 保持图片比例 */
+}
+
+/* 教育经历的学校名称样式 */
+.edu-school {
+  font-size: 1.2rem; /* 学校名称的字体大小 */
+  color: #333; /* 学校名称的字体颜色 */
+  margin-bottom: 5px; /* 学校名称与详情的间距 */
+}
+
+/* 教育经历的详细信息样式 */
+.edu-details {
+  font-size: 1rem; /* 详情的字体大小 */
+  color: #666; /* 详情的字体颜色 */
+}
+
+/* 教育条目整体布局 */
+.list-group li {
+  display: flex; /* 使用 flexbox 布局，校徽和文字并排 */
+  align-items: flex-start; /* 校徽和文字顶部对齐 */
+  margin-bottom: 20px; /* 每个教育条目之间的间距 */
+}
+
+.list-group li div {
+  display: flex;
+  flex-direction: column; /* 学校名称和详情垂直排列 */
+}
+
+
+/* Experience Section Logos */
+.exp-logo {
+  width: 50px; /* 图标宽度 */
+  height: 50px; /* 图标高度 */
+  border-radius: 5px; /* 圆角可选 */
+  margin-right: 15px; /* 图标与文字的间距 */
+  vertical-align: middle; /* 图片和文字垂直对齐 */
+  object-fit: contain; /* 确保图标比例一致 */
+}
+
+/* 实习条目的机构名称样式 */
+.exp-organization {
+  font-size: 1.2rem; /* 机构名称的字体大小 */
+  color: #333; /* 机构名称的字体颜色 */
+  margin-bottom: 5px; /* 机构名称与详情的间距 */
+}
+
+/* 实习条目的详细信息样式 */
+.exp-details {
+  font-size: 1rem; /* 职位描述的字体大小 */
+  color: #666; /* 职位描述的字体颜色 */
+}
+
+/* 实习条目整体布局 */
+.list-group li {
+  display: flex; /* 使用 flexbox 布局，图标和文字并排 */
+  align-items: flex-start; /* 图标和文字顶部对齐 */
+  margin-bottom: 20px; /* 每个条目之间的间距 */
+}
+
+.list-group li div {
+  display: flex;
+  flex-direction: column; /* 机构名称和职位描述垂直排列 */
+}
+
+
+/* Header Logo and Title */
+.logo-container {
+  display: flex; /* 使用 flex 布局，使 Logo 和标题水平排列 */
+  align-items: center; /* 垂直居中对齐 */
+}
+
+.site-logo {
+  width: 40px; /* Logo 的宽度 */
+  height: 40px; /* Logo 的高度 */
+  margin-right: 10px; /* Logo 与标题之间的间距 */
+  object-fit: contain; /* 保持 Logo 比例 */
+}
+
+.site-title {
+  font-size: 1.5rem; /* 标题字体大小 */
+  color: #333; /* 标题字体颜色 */
+}
+
+
+/* 布局调整 */
+.publication-content {
+  display: flex; /* 左右内容并排 */
+  gap: 20px; /* 左右内容间距 */
+  align-items: flex-start; /* 垂直顶部对齐 */
+}
+
+/* 媒体展示框 */
+.media-box {
+  flex: 0 0 300px; /* 固定宽度 */
+  max-width: 300px; /* 最大宽度限制 */
+  border-radius: 10px; /* 圆角边框 */
+  overflow: hidden; /* 隐藏超出的内容 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+/* 图片或视频样式 */
+.media-box img, .media-box video {
+  display: block;
+  width: 100%; /* 填充整个框 */
+  height: auto; /* 保持宽高比 */
+  object-fit: cover; /* 裁剪以适应容器 */
+}
+
+/* 右侧文字内容 */
+.text-content {
+  flex: 1; /* 右侧内容占据剩余空间 */
+}
+
+
+/* Publication Links (Button Style) */
+.publication-links a {
+  font-size: 0.9rem; /* 按钮字体大小 */
+  color: #ffffff; /* 按钮字体颜色 (白色) */
+  text-decoration: none; /* 去掉下划线 */
+  padding: 10px 15px; /* 内边距 */
+  border: none; /* 去掉边框 */
+  border-radius: 5px; /* 圆角边框 */
+  background: #0073e6; /* 按钮背景颜色 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 按钮阴影效果 */
+  transition: background 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡效果 */
+  display: inline-block; /* 按钮块效果 */
+}
+
+/* Hover Effect for Buttons */
+.publication-links a:hover {
+  background: #005bb5; /* 鼠标悬停时的背景颜色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增强悬停时阴影效果 */
+}
+
+/* Button Alignment */
+.publication-links {
+  display: flex; /* 水平排列 */
+  gap: 10px; /* 按钮间距 */
+}
+
+/* Add spacing between publication cards */
+.publication-card {
+  margin-bottom: 20px; /* 在每个卡片底部添加 20px 的间距 */
+}
+
