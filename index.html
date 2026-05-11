@@ -6,7 +6,7 @@
 <!--  <img src="assets/images/Fudan_University_Logo.svg.png" alt="Site Logo" class="site-logo">-->
   <link rel="icon" type="image/x-icon" href="assets/images/Fudan_University_Logo.svg.png">
   
-  <title>Qiao Sun @ Fudan University - Academic Portfolio</title>
+  <title>Qiao Sun @ Xiaomi Robotics - Academic Portfolio</title>
   <link rel="stylesheet" href="style.css">
   <style>
     /* General Styles */
@@ -59,7 +59,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 85vh;
+      min-height: 85vh;
+      padding: 60px 20px;
       background: linear-gradient(135deg, #0073e6, #00a3cc);
       color: white;
       text-align: center;
@@ -71,6 +72,30 @@
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 15px;
+    }
+    .hero-bio {
+      max-width: 760px;
+      margin: 18px auto 8px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.10);
+      padding: 20px 28px;
+      border-radius: 10px;
+      backdrop-filter: blur(2px);
+    }
+    .hero-bio p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0 0 12px 0;
+    }
+    .hero-bio p:last-child {
+      margin-bottom: 0;
+    }
+    .hero-bio a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .hero-bio a:hover {
+      color: #e0f4ff;
     }
     .hero .btn {
       margin-top: 20px;
@@ -153,7 +178,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <div class="header-container">
-      <div class="logo"><strong>Qiao Sun @ Fudan University </strong></div>
+      <div class="logo"><strong>Qiao Sun @ Xiaomi Robotics</strong></div>
       <nav class="header-links">
         <a href="#news">News</a>
         <a href="#education">Education </a>
@@ -172,8 +197,23 @@
     <img src="assets/images/profile.jpg" alt="Qiao Sun" class="hero-avatar">
 
     <h1>Qiao SUN</h1>
-    <p>Fudan University </p>
+    <p>Xiaomi Robotics &middot; Robot Foundation Model Team</p>
     <p>Towards Building Embodied Intelligence that Can Understand & Interact with the Physical World.</p>
+
+    <div class="hero-bio">
+      <p>I am a Researcher with the <strong>Robot Foundation Model Team at Xiaomi Robotics</strong>,
+      while continuing my visiting research at <strong>MIT</strong> under
+      <a href="https://people.csail.mit.edu/ganchuang/" target="_blank" rel="noopener noreferrer">Prof. Chuang Gan</a>
+      and <a href="https://yilundu.github.io/" target="_blank" rel="noopener noreferrer">Dr. Yilun Du</a>.
+      My academic journey took an unconventional path &mdash; from Civil Engineering and Financial Management
+      at Tianjin University, to Electrical and Computer Engineering at Fudan University,
+      before fully committing to AI research.</p>
+      <p>My research centers on <strong>embodied AGI</strong> &mdash; building robots that can perceive,
+      reason about, and physically interact with the world. I work at the intersection of
+      world models, vision-language-action models, and scalable robotic learning, aiming to translate
+      the recent breakthroughs in foundation models into the physical world.</p>
+    </div>
+
     <div class="hero-nav">
       <a href="#news">News</a>
       <a href="#education">Education & Visiting</a>
