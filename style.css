@@ -120,6 +120,10 @@ body {
   object-fit: contain; /* 确保图标比例一致 */
 }
 
+.xiaomi-logo {
+  padding: 5px;
+}
+
 /* 实习条目的机构名称样式 */
 .exp-organization {
   font-size: 1.2rem; /* 机构名称的字体大小 */
@@ -162,6 +166,60 @@ body {
 .site-title {
   font-size: 1.5rem; /* 标题字体大小 */
   color: #333; /* 标题字体颜色 */
+}
+
+.featured-publication {
+  border-left: 4px solid #0073e6;
+}
+
+.news-archive > summary {
+  cursor: pointer;
+  color: #0073e6;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.news-archive > summary span {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.news-archive {
+  margin-top: 18px;
+  border-top: 1px solid #e5e9ef;
+  padding-top: 14px;
+}
+
+.news-list-archive {
+  margin-top: 12px;
+}
+
+.service-summary {
+  border-left: 3px solid #0073e6;
+  padding: 4px 0 4px 16px;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.service-summary p {
+  margin: 4px 0;
+}
+
+.reviewing-detail-list {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .publication-content {
+    flex-direction: column;
+  }
+
+  .media-box {
+    flex-basis: auto;
+    max-width: 100%;
+  }
 }
 
 
@@ -225,4 +283,3 @@ body {
 .publication-card {
   margin-bottom: 20px; /* 在每个卡片底部添加 20px 的间距 */
 }
-
