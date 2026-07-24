@@ -168,8 +168,10 @@ body {
   color: #333; /* 标题字体颜色 */
 }
 
-.featured-publication {
+#publications .publication-card {
   border-left: 4px solid #0073e6;
+  box-sizing: border-box;
+  padding-left: 16px;
 }
 
 .news-archive > summary {
