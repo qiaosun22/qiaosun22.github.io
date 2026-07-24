@@ -207,11 +207,48 @@ body {
   margin: 4px 0;
 }
 
+.scholar-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.section-note {
+  margin: -8px 0 24px;
+  color: #666;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.scholar-profile h3,
+.scholar-profile p {
+  margin: 0 0 6px;
+}
+
+.scholar-link {
+  flex: 0 0 auto;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #0073e6;
+  color: #fff;
+}
+
+.scholar-link:hover {
+  background: #005bb5;
+  color: #fff;
+}
+
 .reviewing-detail-list {
   display: none;
 }
 
 @media (max-width: 700px) {
+  .scholar-profile {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .publication-content {
     flex-direction: column;
   }
