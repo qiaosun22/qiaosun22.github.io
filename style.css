@@ -295,7 +295,8 @@ body {
 .hero-avatar {
   width: 180px;
   height: 180px;
-  margin: 4px 0 0;
+  align-self: center;
+  margin: 0;
   border: 1px solid #d9e0e6;
   box-shadow: none;
 }
