@@ -172,8 +172,7 @@ body {
 }
 
 .service-summary {
-  border-left: 3px solid #0073e6;
-  padding: 4px 0 4px 16px;
+  padding: 4px 0;
   margin-bottom: 18px;
   line-height: 1.6;
 }
