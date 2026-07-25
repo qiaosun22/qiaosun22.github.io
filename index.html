@@ -79,6 +79,9 @@
       align-items: flex-start;
       align-self: center;
     }
+    .hero-profile .hero-avatar {
+      margin-bottom: 0;
+    }
     .hero h1 {
       margin: 4px 0 8px;
       color: #17202a;
@@ -115,10 +118,9 @@
     }
     .hero-links {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: 4px;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 22px;
     }
     .hero-links a {
       display: inline-flex;
@@ -206,11 +208,6 @@
     <div class="hero-inner">
       <div class="hero-profile">
         <img src="assets/images/profile-cropped.png" alt="Qiao Sun" class="hero-avatar" width="180" height="180" fetchpriority="high">
-        <div class="hero-links">
-          <a href="https://scholar.google.com.hk/citations?user=wEoImc8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9 12 4l9 5-9 5-9-5Z"/><path d="M7 12v4.5c2.8 2 7.2 2 10 0V12"/><path d="M21 9v6"/></svg><span>Google Scholar</span></a>
-          <a href="https://github.com/qiaosun22" target="_blank" rel="noopener noreferrer"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .7C5.7.7.6 5.8.6 12.1c0 5 3.3 9.3 7.8 10.8.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.5-.3-5.2-1.3-5.2-5.6 0-1.2.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.4 5 17.4 5.3 17.4 5.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.3-2.6 5.3-5.2 5.6.4.4.8 1.1.8 2.1v3.1c0 .4.2.7.8.6a11.4 11.4 0 0 0 7.8-10.8C23.4 5.8 18.3.7 12 .7Z"/></svg><span>GitHub</span></a>
-          <a href="mailto:qiaosun22@m.fudan.edu.cn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email</span></a>
-        </div>
       </div>
       <div class="hero-content">
         <h1>Qiao Sun</h1>
@@ -219,6 +216,11 @@
           <p>I am an Advanced Researcher at the <strong>Robot Foundation Model Team, Xiaomi Robotics</strong>, where I was selected for the <strong>Top Talent Program</strong>. My research focuses on scalability in embodied learning, aiming to build robotic systems that generalize robustly across diverse tasks and environments.</p>
           <p>Specifically, I am currently exploring two directions to advance scalable robot learning: (1) leveraging large-scale human data to unlock generalizable manipulation policies, and (2) developing unified visual-tactile representations to enable transferable physical grounding.</p>
           <p>Previously, I was a Visiting Researcher at <strong>Harvard University and MIT-IBM Watson AI Lab</strong>, under the guidance of <a href="https://people.csail.mit.edu/ganchuang/" target="_blank" rel="noopener noreferrer">Prof. Chuang Gan</a> and <a href="https://yilundu.github.io/" target="_blank" rel="noopener noreferrer">Prof. Yilun Du</a>, and in close collaboration with <a href="https://haoyuzhen.com/" target="_blank" rel="noopener noreferrer">Haoyu Zhen</a>. Earlier, I was a Research Intern at Shanghai AI Laboratory. I received my M.S. in Electrical and Computer Engineering from Fudan University, and a B.S. in Civil Engineering with a degree in Financial Management from Tianjin University.</p>
+        </div>
+        <div class="hero-links">
+          <a href="https://scholar.google.com.hk/citations?user=wEoImc8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9 12 4l9 5-9 5-9-5Z"/><path d="M7 12v4.5c2.8 2 7.2 2 10 0V12"/><path d="M21 9v6"/></svg><span>Google Scholar</span></a>
+          <a href="https://github.com/qiaosun22" target="_blank" rel="noopener noreferrer"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .7C5.7.7.6 5.8.6 12.1c0 5 3.3 9.3 7.8 10.8.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.5-.3-5.2-1.3-5.2-5.6 0-1.2.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.4 5 17.4 5.3 17.4 5.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.3-2.6 5.3-5.2 5.6.4.4.8 1.1.8 2.1v3.1c0 .4.2.7.8.6a11.4 11.4 0 0 0 7.8-10.8C23.4 5.8 18.3.7 12 .7Z"/></svg><span>GitHub</span></a>
+          <a href="mailto:qiaosun22@m.fudan.edu.cn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email</span></a>
         </div>
       </div>
     </div>
