@@ -392,11 +392,6 @@ header .header-links a.active {
     hyphens: none;
   }
 
-  .hero-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
 }
 
 @media (max-width: 700px) {
