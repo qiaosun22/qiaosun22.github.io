@@ -34,6 +34,35 @@ window.addEventListener("scroll", () => {
 handleHeaderScroll();
 handleListScroll();
 
+// Load project videos only when they are near the viewport.
+const lazyVideos = document.querySelectorAll("video.lazy-video");
+if ("IntersectionObserver" in window) {
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.src) {
+            video.src = video.dataset.src;
+            video.load();
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    },
+    { rootMargin: "200px 0px", threshold: 0.1 }
+  );
+
+  lazyVideos.forEach((video) => videoObserver.observe(video));
+} else {
+  lazyVideos.forEach((video) => {
+    video.src = video.dataset.src;
+    video.load();
+  });
+}
+
 
 //// Scroll-triggered animation for section headers
 //const headers = document.querySelectorAll(".section-header");

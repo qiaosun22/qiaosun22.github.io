@@ -332,3 +332,97 @@ body {
 .publication-card {
   margin-bottom: 20px; /* 在每个卡片底部添加 20px 的间距 */
 }
+
+/* Compact academic hero */
+.hero .hero-content h1,
+.hero .hero-content p {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.hero-avatar {
+  width: 180px;
+  height: 180px;
+  margin: 4px 0 0;
+  border: 1px solid #d9e0e6;
+  box-shadow: none;
+}
+
+header .header-links a {
+  margin: 0 0 0 24px;
+  color: #3d4a55;
+  font-size: 0.94rem;
+}
+
+.media-box {
+  aspect-ratio: 16 / 9;
+  background: #eef1f4;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.media-box img,
+.media-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 820px) {
+  header .header-container {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  header .header-links {
+    display: flex;
+    max-width: 70%;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  header .header-links a {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  body .hero .hero-inner {
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hero-avatar {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .hero {
+    padding: 44px 20px 36px;
+  }
+
+  body .hero .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero-avatar {
+    width: 132px;
+    height: 132px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-affiliation {
+    line-height: 1.5;
+  }
+
+  .hero-links {
+    gap: 16px;
+  }
+}

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" href="assets/images/Fudan_University_Logo.svg.png">
   
   <title>Qiao Sun @ Xiaomi Robotics - Academic Portfolio</title>
-  <link rel="stylesheet" href="style.css?v=20260725-1">
+  <link rel="stylesheet" href="style.css?v=20260725-2">
   <style>
     /* General Styles */
     body {
@@ -55,78 +55,64 @@
 
     /* Hero Section */
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 85vh;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #0073e6, #00a3cc);
-      color: white;
-      text-align: center;
+      max-width: none;
+      margin: 0 0 32px;
+      padding: 68px 24px 56px;
+      background: #ffffff;
+      color: #222;
+      border-bottom: 1px solid #e2e7ed;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 44px;
+      align-items: start;
+      max-width: 1040px;
+      margin: 0 auto;
     }
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      margin: 4px 0 8px;
+      color: #17202a;
+      font-size: 2.75rem;
+      line-height: 1.1;
     }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
+    .hero-affiliation {
+      margin: 0 0 22px;
+      color: #4d5c69;
+      font-size: 1.05rem;
     }
     .hero-bio {
-      max-width: 760px;
-      margin: 18px auto 8px;
+      max-width: 780px;
+      margin: 0;
+      padding: 0;
+      background: transparent;
       text-align: left;
-      background: rgba(255, 255, 255, 0.10);
-      padding: 20px 28px;
-      border-radius: 10px;
-      backdrop-filter: blur(2px);
     }
     .hero-bio p {
+      margin: 0 0 12px;
+      color: #3f4b55;
       font-size: 1rem;
       line-height: 1.7;
-      margin: 0 0 12px 0;
-    }
-    .hero-bio p:last-child {
-      margin-bottom: 0;
     }
     .hero-bio a {
-      color: #ffffff;
-      text-decoration: underline;
+      color: #0068c9;
+      text-decoration: none;
     }
     .hero-bio a:hover {
-      color: #e0f4ff;
+      text-decoration: underline;
     }
-    .hero .btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: white;
-      color: #0073e6;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      border-radius: 5px;
-    }
-    .hero .btn:hover {
-      background: #e0f4ff;
-    }
-    .hero-nav {
+    .hero-links {
       display: flex;
-      gap: 20px;
-      margin-top: 30px;
       flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 22px;
     }
-    .hero-nav a {
-      color: white;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-    .hero-nav a:hover {
-      background: rgba(255, 255, 255, 0.4);
+    .hero-links a {
+      color: #0068c9;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
     /* Section Styles */
@@ -181,12 +167,9 @@
       <div class="logo"><strong>Qiao Sun @ Xiaomi Robotics</strong></div>
       <nav class="header-links">
         <a href="#news">News</a>
-        <a href="#education">Education </a>
-        <a href="#research-interests">Research Interests</a>
-        <a href="#publications">Projects</a>
-        <a href="#scholar">Scholar</a>
+        <a href="#publications">Research</a>
         <a href="#experience">Experience</a>
-        <a href="#service">Services</a>
+        <a href="#scholar">Scholar</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -194,29 +177,22 @@
 
   <!-- Hero Section -->
   <section class="hero">
-
-    <img src="assets/images/profile.jpg" alt="Qiao Sun" class="hero-avatar">
-
-    <h1>Qiao SUN</h1>
-    <p><strong>Xiaomi Robotics</strong> &middot; Robot Foundation Model Team</p>
-    <p>Towards Building Embodied Intelligence that Can Understand & Interact with the Physical World.</p>
-
-    <div class="hero-bio">
-      <p>I am a Researcher at the <strong>Robot Foundation Model Team, Xiaomi Robotics</strong>. My research focuses on scalability in embodied learning, aiming to build robotic systems that generalize robustly across diverse tasks and environments.</p>
-      <p>Specifically, I am currently exploring two directions to advance scalable robot learning: (1) leveraging large-scale human data to unlock generalizable manipulation policies, and (2) developing unified visual-tactile representations to enable transferable physical grounding. Previously, I was a Visiting Researcher at <strong>UMass Amherst and MIT-IBM Watson AI Lab</strong> under <a href="https://people.csail.mit.edu/ganchuang/" target="_blank" rel="noopener noreferrer">Prof. Chuang Gan</a> and <a href="https://yilundu.github.io/" target="_blank" rel="noopener noreferrer">Dr. Yilun Du</a>. I received my M.S. in Electrical and Computer Engineering from Fudan University, and a B.S. in Civil Engineering with a degree in Financial Management from Tianjin University.</p>
+    <div class="hero-inner">
+      <img src="assets/images/profile.jpg" alt="Qiao Sun" class="hero-avatar" width="180" height="180" fetchpriority="high">
+      <div class="hero-content">
+        <h1>Qiao Sun</h1>
+        <p class="hero-affiliation">Researcher, Robot Foundation Model Team &middot; Xiaomi Robotics</p>
+        <div class="hero-bio">
+          <p>I am a Researcher at the <strong>Robot Foundation Model Team, Xiaomi Robotics</strong>. My research focuses on scalability in embodied learning, aiming to build robotic systems that generalize robustly across diverse tasks and environments.</p>
+          <p>Specifically, I am currently exploring two directions to advance scalable robot learning: (1) leveraging large-scale human data to unlock generalizable manipulation policies, and (2) developing unified visual-tactile representations to enable transferable physical grounding. Previously, I was a Visiting Researcher at <strong>UMass Amherst and MIT-IBM Watson AI Lab</strong> under <a href="https://people.csail.mit.edu/ganchuang/" target="_blank" rel="noopener noreferrer">Prof. Chuang Gan</a> and <a href="https://yilundu.github.io/" target="_blank" rel="noopener noreferrer">Dr. Yilun Du</a>. I received my M.S. in Electrical and Computer Engineering from Fudan University, and a B.S. in Civil Engineering with a degree in Financial Management from Tianjin University.</p>
+        </div>
+        <div class="hero-links">
+          <a href="https://scholar.google.com.hk/citations?user=wEoImc8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          <a href="https://github.com/qiaosun22" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:qiaosun22@m.fudan.edu.cn">Email</a>
+        </div>
+      </div>
     </div>
-
-    <div class="hero-nav">
-      <a href="#news">News</a>
-      <a href="#education">Education & Visiting</a>
-      <a href="#research-interests">Research Interests</a>
-      <a href="#publications">Projects</a>
-      <a href="#scholar">Scholar</a>
-      <a href="#experience">Experience</a>
-      <a href="#service">Services</a>
-      <a href="#contact">Contact</a>
-    </div>
-    
   </section>
 
   <!-- News Section -->
@@ -303,7 +279,7 @@
     <div class="publication-card visible featured-publication">
       <div class="publication-content">
         <div class="media-box">
-          <video src="assets/videos/xiaomi-robotics-1.mp4" aria-label="Xiaomi-Robotics-1 project video" autoplay muted loop playsinline></video>
+          <video class="lazy-video" data-src="assets/videos/xiaomi-robotics-1.mp4" poster="assets/images/xiaomi-robotics-1-poster.webp" aria-label="Xiaomi-Robotics-1 project video" preload="none" muted loop playsinline></video>
         </div>
         <div class="text-content">
           <h3>Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories</h3>
@@ -321,7 +297,7 @@
     <div class="publication-card visible">
       <div class="publication-content">
         <div class="media-box">
-          <img src="assets/images/TEASER-action-images.png" alt="Action Images Media">
+          <img src="assets/images/action-images.webp" alt="Action Images media" loading="lazy" decoding="async">
         </div>
         <div class="text-content">
           <h3>Action Images: End-to-End Policy Learning via Multiview Video Generation</h3>
@@ -340,7 +316,7 @@
     <div class="publication-card visible">
       <div class="publication-content">
         <div class="media-box">
-          <video src="assets/videos/xiaomi-robotics-0.mp4" aria-label="Xiaomi-Robotics-0 official demonstration video" autoplay muted loop playsinline></video>
+          <video class="lazy-video" data-src="assets/videos/xiaomi-robotics-0.mp4" poster="assets/images/xiaomi-robotics-0-poster.webp" aria-label="Xiaomi-Robotics-0 official demonstration video" preload="none" muted loop playsinline></video>
         </div>
         <div class="text-content">
           <h3>Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution</h3>
@@ -358,7 +334,7 @@
       <div class="publication-content">
         <!-- 左侧媒体展示框 -->
         <div class="media-box">
-          <img src="assets/images/TEASER-primitive.png" alt="Research Media">
+          <img src="assets/images/primitive-world.webp" alt="Primitive Embodied World Models media" loading="lazy" decoding="async">
           <!-- 或者可以改成 <video> 元素 -->
         </div>
         <!-- 右侧文字内容 -->
@@ -384,7 +360,7 @@
       <div class="publication-content">
         <!-- 左侧媒体展示框 -->
         <div class="media-box">
-          <img src="assets/videos/TEASER-4dwm.gif" alt="Research Media">
+          <video class="lazy-video" data-src="assets/videos/tesseract.mp4" poster="assets/images/tesseract-poster.webp" aria-label="TesserAct project video" preload="none" muted loop playsinline></video>
           <!-- 或者可以改成 <video> 元素 -->
         </div>
         <!-- 右侧文字内容 -->
@@ -580,7 +556,7 @@
   <footer>
     <p>© 2026 Qiao Sun, M.Eng. All Rights Reserved.</p>
   </footer>
-  <script src="script.js"></script>
+  <script src="script.js?v=20260725-2"></script>
 </body>
 </html>
       
