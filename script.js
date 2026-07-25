@@ -36,13 +36,12 @@ handleListScroll();
 
 // Fade the hero content as it scrolls behind the fixed header.
 const hero = document.querySelector(".hero");
-const heroInner = document.querySelector(".hero-inner");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let heroAnimationFrame = null;
 
 function updateHeroScrollEffect() {
   heroAnimationFrame = null;
-  if (!hero || !heroInner || reducedMotion.matches) {
+  if (!hero || reducedMotion.matches) {
     return;
   }
 
@@ -50,7 +49,7 @@ function updateHeroScrollEffect() {
   const fadeDistance = Math.max(240, Math.min(hero.offsetHeight * 0.6, 420));
   const progress = Math.min(Math.max((45 - heroTop) / fadeDistance, 0), 1);
   const easedProgress = progress * progress * (3 - 2 * progress);
-  heroInner.style.setProperty("--hero-scroll-progress", easedProgress.toFixed(3));
+  hero.style.setProperty("--hero-scroll-progress", easedProgress.toFixed(3));
 }
 
 function requestHeroScrollEffect() {

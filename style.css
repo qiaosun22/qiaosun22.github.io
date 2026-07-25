@@ -285,7 +285,7 @@ body {
 }
 
 /* Compact academic hero */
-.hero-inner {
+.hero {
   --hero-scroll-progress: 0;
   opacity: calc(1 - var(--hero-scroll-progress));
   transform: translate3d(0, calc(var(--hero-scroll-progress) * -24px), 0);
@@ -381,13 +381,18 @@ header .header-links a {
     line-height: 1.5;
   }
 
+  .hero-bio p {
+    text-align: left;
+    hyphens: none;
+  }
+
   .hero-links {
     gap: 16px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-inner {
+  .hero {
     opacity: 1;
     transform: none;
     will-change: auto;
