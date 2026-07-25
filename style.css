@@ -275,6 +275,7 @@ body {
 /* Button Alignment */
 .publication-links {
   display: flex; /* 水平排列 */
+  flex-wrap: wrap;
   gap: 10px; /* 按钮间距 */
 }
 
