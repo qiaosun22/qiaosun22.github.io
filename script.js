@@ -28,8 +28,43 @@ const headerLinks = Array.from(document.querySelectorAll(".header-links a[href^=
 const navigationSections = headerLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
+let lockedNavigationId = null;
+let lockedNavigationScrollY = null;
+
+function setActiveNavigation(activeId) {
+  headerLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${activeId}`;
+    link.classList.toggle("active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+headerLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    lockedNavigationId = link.getAttribute("href").slice(1);
+    lockedNavigationScrollY = null;
+    setActiveNavigation(lockedNavigationId);
+    window.requestAnimationFrame(() => {
+      lockedNavigationScrollY = window.scrollY;
+    });
+  });
+});
 
 function handleNavigationScroll() {
+  if (
+    lockedNavigationId &&
+    (lockedNavigationScrollY === null || Math.abs(window.scrollY - lockedNavigationScrollY) <= 4)
+  ) {
+    setActiveNavigation(lockedNavigationId);
+    return;
+  }
+
+  lockedNavigationId = null;
+  lockedNavigationScrollY = null;
   const marker = window.scrollY + Math.min(window.innerHeight * 0.3, 240);
   let activeSection = null;
 
@@ -43,15 +78,7 @@ function handleNavigationScroll() {
     activeSection = navigationSections[navigationSections.length - 1] || null;
   }
 
-  headerLinks.forEach((link) => {
-    const isActive = activeSection && link.getAttribute("href") === `#${activeSection.id}`;
-    link.classList.toggle("active", Boolean(isActive));
-    if (isActive) {
-      link.setAttribute("aria-current", "location");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
+  setActiveNavigation(activeSection ? activeSection.id : null);
 }
 
 // 绑定滚动事件
