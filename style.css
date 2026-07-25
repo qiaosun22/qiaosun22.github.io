@@ -285,13 +285,6 @@ body {
 }
 
 /* Compact academic hero */
-.hero {
-  --hero-scroll-progress: 0;
-  opacity: calc(1 - var(--hero-scroll-progress));
-  transform: translate3d(0, calc(var(--hero-scroll-progress) * -24px), 0);
-  will-change: opacity, transform;
-}
-
 .hero .hero-content h1,
 .hero .hero-content p {
   opacity: 1;
@@ -388,13 +381,5 @@ header .header-links a {
 
   .hero-links {
     gap: 16px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero {
-    opacity: 1;
-    transform: none;
-    will-change: auto;
   }
 }

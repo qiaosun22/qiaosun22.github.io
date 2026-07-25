@@ -34,34 +34,6 @@ window.addEventListener("scroll", () => {
 handleHeaderScroll();
 handleListScroll();
 
-// Fade the hero content as it scrolls behind the fixed header.
-const hero = document.querySelector(".hero");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let heroAnimationFrame = null;
-
-function updateHeroScrollEffect() {
-  heroAnimationFrame = null;
-  if (!hero || reducedMotion.matches) {
-    return;
-  }
-
-  const heroTop = hero.getBoundingClientRect().top;
-  const fadeDistance = Math.max(240, Math.min(hero.offsetHeight * 0.6, 420));
-  const progress = Math.min(Math.max((45 - heroTop) / fadeDistance, 0), 1);
-  const easedProgress = progress * progress * (3 - 2 * progress);
-  hero.style.setProperty("--hero-scroll-progress", easedProgress.toFixed(3));
-}
-
-function requestHeroScrollEffect() {
-  if (heroAnimationFrame === null) {
-    heroAnimationFrame = window.requestAnimationFrame(updateHeroScrollEffect);
-  }
-}
-
-window.addEventListener("scroll", requestHeroScrollEffect, { passive: true });
-window.addEventListener("resize", requestHeroScrollEffect);
-updateHeroScrollEffect();
-
 // Load project videos only when they are near the viewport.
 const lazyVideos = document.querySelectorAll("video.lazy-video");
 if ("IntersectionObserver" in window) {
