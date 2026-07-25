@@ -30,6 +30,8 @@ const navigationSections = headerLinks
   .filter(Boolean);
 let lockedNavigationId = null;
 let lockedNavigationScrollY = null;
+let navigationHasMoved = window.scrollY > 0;
+let previousNavigationScrollY = window.scrollY;
 
 function setActiveNavigation(activeId) {
   headerLinks.forEach((link) => {
@@ -63,6 +65,11 @@ function handleNavigationScroll() {
     return;
   }
 
+  if (!navigationHasMoved) {
+    setActiveNavigation(null);
+    return;
+  }
+
   lockedNavigationId = null;
   lockedNavigationScrollY = null;
   const marker = window.scrollY + Math.min(window.innerHeight * 0.3, 240);
@@ -83,6 +90,10 @@ function handleNavigationScroll() {
 
 // 绑定滚动事件
 window.addEventListener("scroll", () => {
+  if (window.scrollY !== previousNavigationScrollY) {
+    navigationHasMoved = true;
+    previousNavigationScrollY = window.scrollY;
+  }
   handleHeaderScroll();
   handleListScroll();
   handleNavigationScroll();
