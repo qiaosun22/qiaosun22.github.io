@@ -74,29 +74,6 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Education Section Logos */
-.edu-logo {
-  width: 50px; /* 校徽宽度 */
-  height: 50px; /* 校徽高度 */
-  border-radius: 5px; /* 圆角可选 */
-  margin-right: 15px; /* 图片与文字的间距 */
-  vertical-align: middle; /* 图片与文字垂直居中 */
-  object-fit: contain; /* 保持图片比例 */
-}
-
-/* 教育经历的学校名称样式 */
-.edu-school {
-  font-size: 1.2rem; /* 学校名称的字体大小 */
-  color: #333; /* 学校名称的字体颜色 */
-  margin-bottom: 5px; /* 学校名称与详情的间距 */
-}
-
-/* 教育经历的详细信息样式 */
-.edu-details {
-  font-size: 1rem; /* 详情的字体大小 */
-  color: #666; /* 详情的字体颜色 */
-}
-
 /* 教育条目整体布局 */
 .list-group li {
   display: flex; /* 使用 flexbox 布局，校徽和文字并排 */
@@ -118,10 +95,6 @@ body {
   margin-right: 15px; /* 图标与文字的间距 */
   vertical-align: middle; /* 图片和文字垂直对齐 */
   object-fit: contain; /* 确保图标比例一致 */
-}
-
-.xiaomi-logo {
-  padding: 5px;
 }
 
 /* 实习条目的机构名称样式 */
@@ -174,16 +147,6 @@ body {
   padding-left: 16px;
 }
 
-#experience .list-group li {
-  border-left: 4px solid #0073e6;
-  box-sizing: border-box;
-  padding-left: 16px;
-}
-
-#experience .list-group li::before {
-  content: none;
-}
-
 .news-archive > summary {
   cursor: pointer;
   color: #0073e6;
@@ -219,13 +182,6 @@ body {
   margin: 4px 0;
 }
 
-.scholar-profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
 .section-note {
   margin: -8px 0 24px;
   color: #666;
@@ -233,34 +189,11 @@ body {
   line-height: 1.5;
 }
 
-.scholar-profile h3,
-.scholar-profile p {
-  margin: 0 0 6px;
-}
-
-.scholar-link {
-  flex: 0 0 auto;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background: #0073e6;
-  color: #fff;
-}
-
-.scholar-link:hover {
-  background: #005bb5;
-  color: #fff;
-}
-
 .reviewing-detail-list {
   display: none;
 }
 
 @media (max-width: 700px) {
-  .scholar-profile {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .publication-content {
     flex-direction: column;
   }
