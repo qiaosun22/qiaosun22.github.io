@@ -303,8 +303,23 @@ body {
 
 header .header-links a {
   margin: 0 0 0 24px;
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 5px;
   color: #3d4a55;
   font-size: 0.94rem;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+header .header-links a:hover {
+  color: #0068c9;
+  background: #f5f9fd;
+}
+
+header .header-links a.active {
+  color: #0068c9;
+  background: #edf6ff;
+  border-color: #9bc8ef;
 }
 
 .media-box {

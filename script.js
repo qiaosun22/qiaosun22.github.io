@@ -24,15 +24,47 @@ function handleListScroll() {
   });
 }
 
+const headerLinks = Array.from(document.querySelectorAll(".header-links a[href^='#']"));
+const navigationSections = headerLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+function handleNavigationScroll() {
+  const marker = window.scrollY + Math.min(window.innerHeight * 0.3, 240);
+  let activeSection = null;
+
+  navigationSections.forEach((section) => {
+    if (section.offsetTop <= marker) {
+      activeSection = section;
+    }
+  });
+
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+    activeSection = navigationSections[navigationSections.length - 1] || null;
+  }
+
+  headerLinks.forEach((link) => {
+    const isActive = activeSection && link.getAttribute("href") === `#${activeSection.id}`;
+    link.classList.toggle("active", Boolean(isActive));
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
 // 绑定滚动事件
 window.addEventListener("scroll", () => {
   handleHeaderScroll();
   handleListScroll();
+  handleNavigationScroll();
 });
 
 // 初始化检查
 handleHeaderScroll();
 handleListScroll();
+handleNavigationScroll();
 
 // Load project videos only when they are near the viewport.
 const lazyVideos = document.querySelectorAll("video.lazy-video");
