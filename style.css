@@ -284,8 +284,8 @@ body {
 }
 
 /* Compact academic hero */
-.hero .hero-content h1,
-.hero .hero-content p {
+.hero h1,
+.hero p {
   opacity: 1;
   transform: none;
   animation: none;
@@ -294,8 +294,8 @@ body {
 .hero-avatar {
   width: 180px;
   height: 180px;
-  align-self: center;
-  margin: 0;
+  align-self: flex-start;
+  margin: 0 0 24px;
   border: 1px solid #d9e0e6;
   box-shadow: none;
 }
@@ -303,7 +303,7 @@ body {
 header .header-links a {
   margin: 0 0 0 24px;
   padding: 5px 9px;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: 5px;
   color: #3d4a55;
   font-size: 0.94rem;
@@ -316,9 +316,8 @@ header .header-links a:hover {
 }
 
 header .header-links a.active {
-  color: #0068c9;
-  background: #edf6ff;
-  border-color: #9bc8ef;
+  color: #ffffff;
+  background: #0073e6;
 }
 
 .media-box {
@@ -355,7 +354,7 @@ header .header-links a.active {
   }
 
   body .hero .hero-inner {
-    grid-template-columns: 140px minmax(0, 1fr);
+    grid-template-columns: 210px minmax(0, 1fr);
     gap: 28px;
   }
 
@@ -394,6 +393,18 @@ header .header-links a.active {
   }
 
   .hero-links {
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .media-box {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 }
