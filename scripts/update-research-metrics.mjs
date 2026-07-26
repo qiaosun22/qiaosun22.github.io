@@ -11,12 +11,21 @@ const projects = {
   "action-images": {
     scholarTitles: ["action images: end-to-end policy learning via multiview video generation"],
     repository: "UMass-Embodied-AGI/ActionImages",
+    models: ["anyeZHY/ActionImages"],
   },
   "xiaomi-robotics-0": {
     scholarTitles: [
       "xiaomi-robotics-0: an open-sourced vision-language-action model with real-time execution",
     ],
     repository: "XiaomiRobotics/Xiaomi-Robotics-0",
+    models: [
+      "XiaomiRobotics/Xiaomi-Robotics-0-LIBERO",
+      "XiaomiRobotics/Xiaomi-Robotics-0-Calvin-ABCD_D",
+      "XiaomiRobotics/Xiaomi-Robotics-0-Calvin-ABC_D",
+      "XiaomiRobotics/Xiaomi-Robotics-0-SimplerEnv-Google-Robot",
+      "XiaomiRobotics/Xiaomi-Robotics-0-SimplerEnv-WidowX",
+      "XiaomiRobotics/Xiaomi-Robotics-0-Pretrain",
+    ],
   },
   "primitive-world-models": {
     scholarTitles: [
@@ -29,6 +38,7 @@ const projects = {
       "learning 4d embodied world models",
     ],
     repository: "UMass-Embodied-AGI/TesserAct",
+    models: ["anyeZHY/tesseract"],
   },
 };
 
@@ -85,6 +95,31 @@ async function getGitHubStars(repository, fallback) {
   return data.stargazers_count;
 }
 
+async function getHuggingFaceDownloads(repositories, fallback) {
+  let total = 0;
+  for (const repository of repositories) {
+    try {
+      const response = await fetch(`https://huggingface.co/api/models/${repository}`);
+      if (!response.ok) {
+        console.warn(
+          `Hugging Face returned ${response.status} for ${repository}; keeping ${fallback}`
+        );
+        return fallback;
+      }
+      const data = await response.json();
+      if (!Number.isFinite(data.downloads)) {
+        console.warn(`Hugging Face returned no download count for ${repository}; keeping ${fallback}`);
+        return fallback;
+      }
+      total += data.downloads;
+    } catch (error) {
+      console.warn(`Hugging Face request failed for ${repository}; keeping ${fallback}`, error);
+      return fallback;
+    }
+  }
+  return total;
+}
+
 const currentMetrics = JSON.parse(await readFile(metricsPath, "utf8"));
 const citationsByTitle = await getScholarCitations();
 const updatedProjects = {};
@@ -99,11 +134,18 @@ for (const [projectId, config] of Object.entries(projects)) {
   if (config.repository) {
     updatedProjects[projectId].stars = await getGitHubStars(config.repository, current.stars);
   }
+  if (config.models) {
+    const downloads = await getHuggingFaceDownloads(config.models, current.downloads);
+    if (Number.isFinite(downloads)) updatedProjects[projectId].downloads = downloads;
+  }
 }
 
 const updatedMetrics = {
   updatedAt: new Date().toISOString(),
-  sources: currentMetrics.sources,
+  sources: {
+    ...currentMetrics.sources,
+    downloads: "Hugging Face (last 30 days)",
+  },
   projects: updatedProjects,
 };
 await writeFile(metricsPath, `${JSON.stringify(updatedMetrics, null, 2)}\n`);

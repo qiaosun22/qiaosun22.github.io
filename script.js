@@ -153,6 +153,19 @@ function updateCitationMetric(link, count) {
   if (metric) metric.setAttribute("aria-label", `${formattedCount} Google Scholar citations`);
 }
 
+function updateDownloadMetric(link, count) {
+  const value = link.querySelector(".metric-value");
+  const metric = link.querySelector(".resource-metric");
+  const formattedCount = Number(count).toLocaleString("en-US");
+  if (value) value.textContent = formattedCount;
+  if (metric) {
+    metric.setAttribute(
+      "aria-label",
+      `${formattedCount} Hugging Face downloads in the last 30 days`
+    );
+  }
+}
+
 fetch("assets/data/research-metrics.json")
   .then((response) => (response.ok ? response.json() : null))
   .then((metrics) => {
@@ -162,6 +175,8 @@ fetch("assets/data/research-metrics.json")
       if (!project) return;
       if (link.dataset.githubRepo && Number.isFinite(project.stars)) {
         updateStarMetric(link, project.stars);
+      } else if (link.dataset.metric === "downloads" && Number.isFinite(project.downloads)) {
+        updateDownloadMetric(link, project.downloads);
       } else if (!link.dataset.githubRepo && Number.isFinite(project.citations)) {
         updateCitationMetric(link, project.citations);
       }
