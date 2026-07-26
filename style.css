@@ -475,3 +475,33 @@ header .header-links a.active {
   height: auto;
   object-fit: contain;
 }
+
+.contact-list {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-item {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  line-height: 1.55;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: #0073e6;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.contact-icon.brand-icon {
+  fill: currentColor;
+  stroke: none;
+}
