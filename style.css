@@ -256,7 +256,7 @@ body {
   font-size: 0.9rem; /* 按钮字体大小 */
   color: #ffffff; /* 按钮字体颜色 (白色) */
   text-decoration: none; /* 去掉下划线 */
-  padding: 10px 15px; /* 内边距 */
+  padding: 8px 12px; /* 内边距 */
   border: none; /* 去掉边框 */
   border-radius: 5px; /* 圆角边框 */
   background: #0073e6; /* 按钮背景颜色 */
@@ -267,6 +267,7 @@ body {
 
 /* Hover Effect for Buttons */
 .publication-links a:hover {
+  color: #ffffff;
   background: #005bb5; /* 鼠标悬停时的背景颜色 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增强悬停时阴影效果 */
 }
@@ -275,6 +276,8 @@ body {
   display: inline-flex;
   align-items: stretch;
   padding: 0;
+  border: 1px solid #0073e6;
+  background: transparent;
   overflow: hidden;
 }
 
@@ -285,16 +288,18 @@ body {
 }
 
 .metric-link .resource-label {
-  padding: 10px 11px 10px 14px;
+  padding: 7px 10px 7px 12px;
+  background: #0073e6;
+  color: #ffffff;
 }
 
 .metric-link .resource-metric {
   gap: 4px;
-  min-width: 28px;
-  padding: 10px 9px;
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(0, 0, 0, 0.12);
-  color: #ffffff;
+  min-width: 26px;
+  padding: 7px 8px;
+  border-left: 1px solid #0073e6;
+  background: transparent;
+  color: #0073e6;
   font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
   line-height: 1;
@@ -302,7 +307,7 @@ body {
 }
 
 .metric-link .metric-unit {
-  color: rgba(255, 255, 255, 0.82);
+  color: currentColor;
   font-size: 0.72rem;
 }
 
@@ -311,6 +316,21 @@ body {
   height: 12px;
   fill: currentColor;
   stroke: none;
+}
+
+.publication-links a.metric-link:hover {
+  border-color: #005bb5;
+  background: transparent;
+}
+
+.publication-links a.metric-link:hover .resource-label {
+  background: #005bb5;
+}
+
+.publication-links a.metric-link:hover .resource-metric {
+  border-left-color: #005bb5;
+  background: rgba(0, 91, 181, 0.06);
+  color: #005bb5;
 }
 
 /* Button Alignment */
