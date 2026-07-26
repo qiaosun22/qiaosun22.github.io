@@ -465,3 +465,13 @@ header .header-links a.active {
     aspect-ratio: 16 / 9;
   }
 }
+
+.media-box.media-natural {
+  height: auto;
+  aspect-ratio: auto;
+}
+
+.media-box.media-natural img {
+  height: auto;
+  object-fit: contain;
+}
