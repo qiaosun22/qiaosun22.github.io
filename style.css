@@ -250,6 +250,10 @@ body {
   flex: 1; /* 右侧内容占据剩余空间 */
 }
 
+#publications .text-content > h3 {
+  margin-top: 0;
+}
+
 
 /* Publication Links (Button Style) */
 .publication-links a {
