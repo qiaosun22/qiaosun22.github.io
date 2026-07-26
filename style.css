@@ -254,6 +254,12 @@ body {
   margin-top: 0;
 }
 
+.project-summary {
+  margin: 10px 0 16px;
+  color: #4f5b66;
+  line-height: 1.5;
+}
+
 
 /* Publication Links (Button Style) */
 .publication-links a {
