@@ -271,6 +271,48 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增强悬停时阴影效果 */
 }
 
+.publication-links a.metric-link {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+
+.metric-link .resource-label,
+.metric-link .resource-metric {
+  display: inline-flex;
+  align-items: center;
+}
+
+.metric-link .resource-label {
+  padding: 10px 11px 10px 14px;
+}
+
+.metric-link .resource-metric {
+  gap: 4px;
+  min-width: 28px;
+  padding: 10px 9px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.12);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.metric-link .metric-unit {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
+}
+
+.metric-link .metric-star {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  stroke: none;
+}
+
 /* Button Alignment */
 .publication-links {
   display: flex; /* 水平排列 */

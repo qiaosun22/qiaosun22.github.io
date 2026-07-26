@@ -133,6 +133,77 @@ if ("IntersectionObserver" in window) {
   });
 }
 
+// Refresh GitHub star counts while retaining the inline fallback if the API is unavailable.
+const starLinks = document.querySelectorAll("[data-github-repo]");
+const starCacheLifetime = 6 * 60 * 60 * 1000;
+
+function updateStarMetric(link, count) {
+  const value = link.querySelector(".metric-value");
+  const metric = link.querySelector(".resource-metric");
+  const formattedCount = Number(count).toLocaleString("en-US");
+  if (value) value.textContent = formattedCount;
+  if (metric) metric.setAttribute("aria-label", `${formattedCount} GitHub stars`);
+}
+
+function updateCitationMetric(link, count) {
+  const value = link.querySelector(".metric-value");
+  const metric = link.querySelector(".resource-metric");
+  const formattedCount = Number(count).toLocaleString("en-US");
+  if (value) value.textContent = formattedCount;
+  if (metric) metric.setAttribute("aria-label", `${formattedCount} Google Scholar citations`);
+}
+
+fetch("assets/data/research-metrics.json")
+  .then((response) => (response.ok ? response.json() : null))
+  .then((metrics) => {
+    if (!metrics || !metrics.projects) return;
+    document.querySelectorAll("[data-project-id]").forEach((link) => {
+      const project = metrics.projects[link.dataset.projectId];
+      if (!project) return;
+      if (link.dataset.githubRepo && Number.isFinite(project.stars)) {
+        updateStarMetric(link, project.stars);
+      } else if (!link.dataset.githubRepo && Number.isFinite(project.citations)) {
+        updateCitationMetric(link, project.citations);
+      }
+    });
+  })
+  .catch(() => {});
+
+starLinks.forEach(async (link) => {
+  const repository = link.dataset.githubRepo;
+  const cacheKey = `github-stars:${repository}`;
+
+  try {
+    const cached = JSON.parse(localStorage.getItem(cacheKey));
+    if (cached && Date.now() - cached.updatedAt < starCacheLifetime) {
+      updateStarMetric(link, cached.count);
+      return;
+    }
+  } catch (_) {
+    // Ignore unavailable or malformed browser storage.
+  }
+
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repository}`, {
+      headers: { Accept: "application/vnd.github+json" },
+    });
+    if (!response.ok) return;
+
+    const repositoryData = await response.json();
+    updateStarMetric(link, repositoryData.stargazers_count);
+    try {
+      localStorage.setItem(
+        cacheKey,
+        JSON.stringify({ count: repositoryData.stargazers_count, updatedAt: Date.now() })
+      );
+    } catch (_) {
+      // The visible count is already updated; persistence is optional.
+    }
+  } catch (_) {
+    // Keep the server-rendered fallback count when the request fails.
+  }
+});
+
 
 //// Scroll-triggered animation for section headers
 //const headers = document.querySelectorAll(".section-header");

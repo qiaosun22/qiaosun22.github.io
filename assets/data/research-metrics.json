@@ -1,0 +1,27 @@
+{
+  "updatedAt": "2026-07-26T14:47:13.383Z",
+  "sources": {
+    "citations": "Google Scholar",
+    "stars": "GitHub"
+  },
+  "projects": {
+    "xiaomi-robotics-1": {
+      "citations": 0
+    },
+    "action-images": {
+      "citations": 4,
+      "stars": 71
+    },
+    "xiaomi-robotics-0": {
+      "citations": 16,
+      "stars": 613
+    },
+    "primitive-world-models": {
+      "citations": 7
+    },
+    "tesseract": {
+      "citations": 110,
+      "stars": 403
+    }
+  }
+}
