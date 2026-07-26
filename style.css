@@ -372,6 +372,16 @@ body {
   box-shadow: none;
 }
 
+.hero-motto {
+  width: 180px;
+  margin: 18px 0 0;
+  color: #68747e;
+  font-size: 0.84rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
+
 header .header-links a {
   margin: 0 0 0 24px;
   padding: 5px 9px;
@@ -434,6 +444,10 @@ header .header-links a.active {
     width: 140px;
     height: 140px;
   }
+
+  .hero-motto {
+    width: 140px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -449,6 +463,12 @@ header .header-links a.active {
   .hero-avatar {
     width: 132px;
     height: 132px;
+  }
+
+  .hero-motto {
+    width: 132px;
+    margin-top: 16px;
+    font-size: 0.82rem;
   }
 
   .hero h1 {
