@@ -86,13 +86,18 @@ async function getGitHubStars(repository, fallback) {
   };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
-  const response = await fetch(`https://api.github.com/repos/${repository}`, { headers });
-  if (!response.ok) {
-    console.warn(`GitHub returned ${response.status} for ${repository}; keeping ${fallback}`);
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repository}`, { headers });
+    if (!response.ok) {
+      console.warn(`GitHub returned ${response.status} for ${repository}; keeping ${fallback}`);
+      return fallback;
+    }
+    const data = await response.json();
+    return data.stargazers_count;
+  } catch (error) {
+    console.warn(`GitHub request failed for ${repository}; keeping ${fallback}`, error);
     return fallback;
   }
-  const data = await response.json();
-  return data.stargazers_count;
 }
 
 async function getHuggingFaceDownloads(repositories, fallback) {
@@ -121,15 +126,22 @@ async function getHuggingFaceDownloads(repositories, fallback) {
 }
 
 const currentMetrics = JSON.parse(await readFile(metricsPath, "utf8"));
-const citationsByTitle = await getScholarCitations();
+let citationsByTitle = null;
+try {
+  citationsByTitle = await getScholarCitations();
+} catch (error) {
+  console.warn("Google Scholar request failed; keeping existing citation counts", error);
+}
 const updatedProjects = {};
 
 for (const [projectId, config] of Object.entries(projects)) {
   const current = currentMetrics.projects[projectId] || {};
-  const citations = config.scholarTitles.reduce(
-    (total, title) => total + (citationsByTitle.get(title) || 0),
-    0
-  );
+  const citations = citationsByTitle
+    ? config.scholarTitles.reduce(
+        (total, title) => total + (citationsByTitle.get(title) || 0),
+        0
+      )
+    : current.citations;
   updatedProjects[projectId] = { citations };
   if (config.repository) {
     updatedProjects[projectId].stars = await getGitHubStars(config.repository, current.stars);
