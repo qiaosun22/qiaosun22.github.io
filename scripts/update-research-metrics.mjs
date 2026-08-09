@@ -2,10 +2,18 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const metricsPath = new URL("../assets/data/research-metrics.json", import.meta.url);
 const scholarId = "wEoImc8AAAAJ";
+const huggingFaceEndpoint = process.env.HF_ENDPOINT || "https://huggingface.co";
 const projects = {
   "xiaomi-robotics-1": {
     scholarTitles: [
       "xiaomi-robotics-1: scaling vision-language-action models with over 100k hours of real-world trajectories",
+    ],
+    repository: "XiaomiRobotics/Xiaomi-Robotics-1",
+    models: [
+      "XiaomiRobotics/Xiaomi-Robotics-1-5B",
+      "XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa",
+      "XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa365",
+      "XiaomiRobotics/Xiaomi-Robotics-1-VLABench",
     ],
   },
   "action-images": {
@@ -104,7 +112,7 @@ async function getHuggingFaceDownloads(repositories, fallback) {
   let total = 0;
   for (const repository of repositories) {
     try {
-      const response = await fetch(`https://huggingface.co/api/models/${repository}`);
+      const response = await fetch(`${huggingFaceEndpoint}/api/models/${repository}`);
       if (!response.ok) {
         console.warn(
           `Hugging Face returned ${response.status} for ${repository}; keeping ${fallback}`
