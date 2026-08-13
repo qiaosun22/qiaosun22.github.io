@@ -4,6 +4,11 @@ const metricsPath = new URL("../assets/data/research-metrics.json", import.meta.
 const scholarId = "wEoImc8AAAAJ";
 const huggingFaceEndpoint = process.env.HF_ENDPOINT || "https://huggingface.co";
 const projects = {
+  "4d-wam": {
+    scholarTitles: [
+      "4d-wam: infusing spatiotemporal awareness into world action models through trajectory fields",
+    ],
+  },
   "xiaomi-robotics-1": {
     scholarTitles: [
       "xiaomi-robotics-1: scaling vision-language-action models with over 100k hours of real-world trajectories",

@@ -337,8 +337,11 @@ body {
 
 
 /* Publication Links (Button Style) */
-.publication-links a {
+.publication-links a,
+.publication-links .resource-coming-soon {
   font-size: 0.9rem; /* 按钮字体大小 */
+  font-family: inherit;
+  line-height: normal;
   color: #ffffff; /* 按钮字体颜色 (白色) */
   text-decoration: none; /* 去掉下划线 */
   padding: 8px 12px; /* 内边距 */
@@ -351,10 +354,55 @@ body {
 }
 
 /* Hover Effect for Buttons */
-.publication-links a:hover {
+.publication-links a:hover,
+.publication-links .resource-coming-soon:hover,
+.publication-links .resource-coming-soon:focus-visible,
+.publication-links .resource-coming-soon.is-revealed {
   color: #ffffff;
   background: #005bb5; /* 鼠标悬停时的背景颜色 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增强悬停时阴影效果 */
+}
+
+.publication-links .resource-coming-soon {
+  position: relative;
+  cursor: help;
+}
+
+.resource-coming-soon .resource-tooltip {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #17202a;
+  box-shadow: 0 3px 8px rgba(23, 32, 42, 0.2);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 3px);
+  transition: opacity 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+
+.resource-coming-soon .resource-tooltip::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 4px solid transparent;
+  border-top-color: #17202a;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.resource-coming-soon:hover .resource-tooltip,
+.resource-coming-soon:focus-visible .resource-tooltip,
+.resource-coming-soon.is-revealed .resource-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .publication-links a.metric-link {

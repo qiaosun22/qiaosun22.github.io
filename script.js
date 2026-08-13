@@ -133,6 +133,31 @@ if ("IntersectionObserver" in window) {
   });
 }
 
+// Keep unreleased resources discoverable without presenting them as broken links.
+const comingSoonButtons = document.querySelectorAll(".resource-coming-soon");
+const comingSoonTimers = new WeakMap();
+
+comingSoonButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const activeTimer = comingSoonTimers.get(button);
+    if (activeTimer) window.clearTimeout(activeTimer);
+
+    button.classList.add("is-revealed");
+    const timer = window.setTimeout(() => {
+      button.classList.remove("is-revealed");
+      comingSoonTimers.delete(button);
+    }, 1800);
+    comingSoonTimers.set(button, timer);
+  });
+
+  button.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      button.classList.remove("is-revealed");
+      button.blur();
+    }
+  });
+});
+
 // Refresh GitHub star counts while retaining the inline fallback if the API is unavailable.
 const starLinks = document.querySelectorAll("[data-github-repo]");
 const starCacheLifetime = 6 * 60 * 60 * 1000;

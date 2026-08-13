@@ -6,6 +6,9 @@
     "downloads": "Hugging Face (last 30 days)"
   },
   "projects": {
+    "4d-wam": {
+      "citations": 0
+    },
     "xiaomi-robotics-1": {
       "citations": 5,
       "stars": 594,
