@@ -360,7 +360,7 @@ body {
 .publication-links a.metric-link {
   display: inline-flex;
   align-items: stretch;
-  gap: 4px;
+  gap: 0;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -376,6 +376,8 @@ body {
 }
 
 .metric-link .resource-label {
+  position: relative;
+  z-index: 1;
   padding: 7px 10px 7px 12px;
   border-radius: 5px;
   background: #0073e6;
@@ -387,10 +389,12 @@ body {
 .metric-link .resource-metric {
   gap: 4px;
   min-width: 26px;
-  padding: 7px 8px;
+  margin-left: -6px;
+  padding: 7px 8px 7px 14px;
   border: 1px solid #0073e6;
-  border-radius: 5px;
-  background: transparent;
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+  background: #ffffff;
   color: #0073e6;
   font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
@@ -437,6 +441,7 @@ body {
 
 .publication-links a.metric-link:hover .resource-metric {
   border-color: #005bb5;
+  border-left: 0;
   background: rgba(0, 91, 181, 0.06);
   color: #005bb5;
 }
