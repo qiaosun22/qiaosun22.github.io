@@ -137,9 +137,17 @@ if ("IntersectionObserver" in window) {
 const starLinks = document.querySelectorAll("[data-github-repo]");
 const starCacheLifetime = 6 * 60 * 60 * 1000;
 
+function shouldShowMetric(metric, count) {
+  const numericCount = Number(count);
+  const shouldShow = Number.isFinite(numericCount) && numericCount > 0;
+  if (metric) metric.hidden = !shouldShow;
+  return shouldShow;
+}
+
 function updateStarMetric(link, count) {
   const value = link.querySelector(".metric-value");
   const metric = link.querySelector(".resource-metric");
+  if (!shouldShowMetric(metric, count)) return;
   const formattedCount = Number(count).toLocaleString("en-US");
   if (value) value.textContent = formattedCount;
   if (metric) metric.setAttribute("aria-label", `${formattedCount} GitHub stars`);
@@ -148,6 +156,7 @@ function updateStarMetric(link, count) {
 function updateCitationMetric(link, count) {
   const value = link.querySelector(".metric-value");
   const metric = link.querySelector(".resource-metric");
+  if (!shouldShowMetric(metric, count)) return;
   const formattedCount = Number(count).toLocaleString("en-US");
   if (value) value.textContent = formattedCount;
   if (metric) metric.setAttribute("aria-label", `${formattedCount} Google Scholar citations`);
@@ -156,6 +165,7 @@ function updateCitationMetric(link, count) {
 function updateDownloadMetric(link, count) {
   const value = link.querySelector(".metric-value");
   const metric = link.querySelector(".resource-metric");
+  if (!shouldShowMetric(metric, count)) return;
   const formattedCount = Number(count).toLocaleString("en-US");
   if (value) value.textContent = formattedCount;
   if (metric) {

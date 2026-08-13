@@ -391,6 +391,10 @@ body {
   white-space: nowrap;
 }
 
+.metric-link .resource-metric[hidden] {
+  display: none;
+}
+
 .metric-link .metric-unit {
   color: currentColor;
   font-size: 0.72rem;
