@@ -39,6 +39,7 @@ const projects = {
     scholarTitles: [
       "learning primitive embodied world models: towards scalable robot learning",
     ],
+    repository: "qiaosun22/PEWM",
   },
   tesseract: {
     scholarTitles: [
