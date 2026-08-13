@@ -360,10 +360,13 @@ body {
 .publication-links a.metric-link {
   display: inline-flex;
   align-items: stretch;
+  gap: 4px;
   padding: 0;
-  border: 1px solid #0073e6;
+  border: 0;
+  border-radius: 0;
   background: transparent;
-  overflow: hidden;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .metric-link .resource-label,
@@ -374,21 +377,26 @@ body {
 
 .metric-link .resource-label {
   padding: 7px 10px 7px 12px;
+  border-radius: 5px;
   background: #0073e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #ffffff;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .metric-link .resource-metric {
   gap: 4px;
   min-width: 26px;
   padding: 7px 8px;
-  border-left: 1px solid #0073e6;
+  border: 1px solid #0073e6;
+  border-radius: 5px;
   background: transparent;
   color: #0073e6;
   font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
   line-height: 1;
   white-space: nowrap;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .metric-link .resource-metric[hidden] {
@@ -418,16 +426,17 @@ body {
 }
 
 .publication-links a.metric-link:hover {
-  border-color: #005bb5;
   background: transparent;
+  box-shadow: none;
 }
 
 .publication-links a.metric-link:hover .resource-label {
   background: #005bb5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .publication-links a.metric-link:hover .resource-metric {
-  border-left-color: #005bb5;
+  border-color: #005bb5;
   background: rgba(0, 91, 181, 0.06);
   color: #005bb5;
 }
