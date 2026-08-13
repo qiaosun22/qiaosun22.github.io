@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-13T02:59:57.024Z",
+  "updatedAt": "2026-08-13T05:11:29.635Z",
   "sources": {
     "citations": "Google Scholar",
     "stars": "GitHub",
@@ -8,7 +8,7 @@
   "projects": {
     "xiaomi-robotics-1": {
       "citations": 5,
-      "stars": 591,
+      "stars": 593,
       "downloads": 206
     },
     "action-images": {
