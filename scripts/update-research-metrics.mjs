@@ -8,6 +8,7 @@ const projects = {
     scholarTitles: [
       "4d-wam: infusing spatiotemporal awareness into world action models through trajectory fields",
     ],
+    repository: "lishanyqy/4DWAM",
   },
   "xiaomi-robotics-1": {
     scholarTitles: [
