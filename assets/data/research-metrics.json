@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-17T08:44:50.783Z",
+  "updatedAt": "2026-09-18T08:20:29.650Z",
   "sources": {
     "citations": "Google Scholar",
     "stars": "GitHub",
@@ -8,22 +8,22 @@
   "projects": {
     "4d-wam": {
       "citations": 1,
-      "stars": 20
+      "stars": 22
     },
     "xiaomi-robotics-1": {
       "citations": 14,
-      "stars": 696,
-      "downloads": 1519
+      "stars": 698,
+      "downloads": 1509
     },
     "action-images": {
       "citations": 5,
       "stars": 74,
-      "downloads": 12
+      "downloads": 11
     },
     "xiaomi-robotics-0": {
       "citations": 31,
-      "stars": 656,
-      "downloads": 858
+      "stars": 657,
+      "downloads": 786
     },
     "primitive-world-models": {
       "citations": 8,
