@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T12:01:43.227Z",
+  "updatedAt": "2026-11-18T11:54:10.694Z",
   "sources": {
     "citations": "Google Scholar",
     "stars": "GitHub",
@@ -12,18 +12,18 @@
     },
     "xiaomi-robotics-1": {
       "citations": 55,
-      "stars": 756,
-      "downloads": 1141
+      "stars": 758,
+      "downloads": 1105
     },
     "action-images": {
       "citations": 12,
       "stars": 75,
-      "downloads": 59
+      "downloads": 58
     },
     "xiaomi-robotics-0": {
       "citations": 74,
-      "stars": 663,
-      "downloads": 1784
+      "stars": 664,
+      "downloads": 1734
     },
     "primitive-world-models": {
       "citations": 9,
