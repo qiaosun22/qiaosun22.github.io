@@ -1,17 +1,26 @@
 {
-  "updatedAt": "2026-11-20T11:52:10.575Z",
+  "updatedAt": "2026-11-20T15:18:30.327Z",
   "sources": {
     "citations": "Google Scholar",
     "stars": "GitHub",
     "downloads": "Hugging Face (last 30 days)"
   },
   "projects": {
+    "embodiedsmith": {
+      "citations": 5
+    },
+    "geolam": {
+      "citations": 1,
+      "stars": 5,
+      "downloads": 0
+    },
     "4d-wam": {
       "citations": 35,
-      "stars": 24
+      "stars": 24,
+      "downloads": 0
     },
     "xiaomi-robotics-1": {
-      "citations": 55,
+      "citations": 57,
       "stars": 759,
       "downloads": 948
     },
@@ -30,7 +39,7 @@
       "stars": 0
     },
     "tesseract": {
-      "citations": 152,
+      "citations": 153,
       "stars": 413,
       "downloads": 0
     }

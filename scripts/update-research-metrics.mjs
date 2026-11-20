@@ -1,14 +1,31 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const metricsPath = new URL("../assets/data/research-metrics.json", import.meta.url);
+const homepagePath = new URL("../index.html", import.meta.url);
 const scholarId = "wEoImc8AAAAJ";
 const huggingFaceEndpoint = process.env.HF_ENDPOINT || "https://huggingface.co";
 const projects = {
+  embodiedsmith: {
+    scholarTitles: [
+      "embodiedsmith: scaling embodied data through recursive self-improvement flywheel in simulation",
+    ],
+  },
+  geolam: {
+    scholarTitles: [
+      "geolam: learning geometry-grounded latent actions from unlabeled human videos",
+    ],
+    repository: "IvanXie416/GeoLAM",
+    models: ["Ivan416/GeoLAM"],
+  },
   "4d-wam": {
     scholarTitles: [
       "4d-wam: infusing spatiotemporal awareness into world action models through trajectory fields",
     ],
     repository: "lishanyqy/4DWAM",
+    models: [
+      "lishanyang/4dwam_fastwam_joint_libero",
+      "lishanyang/4dwam_fastwam_joint_robotwin_full",
+    ],
   },
   "xiaomi-robotics-1": {
     scholarTitles: [
@@ -151,11 +168,9 @@ const updatedProjects = {};
 
 for (const [projectId, config] of Object.entries(projects)) {
   const current = currentMetrics.projects[projectId] || {};
-  const citations = citationsByTitle
-    ? config.scholarTitles.reduce(
-        (total, title) => total + (citationsByTitle.get(title) || 0),
-        0
-      )
+  const matchedTitles = config.scholarTitles.filter((title) => citationsByTitle?.has(title));
+  const citations = matchedTitles.length
+    ? matchedTitles.reduce((total, title) => total + citationsByTitle.get(title), 0)
     : current.citations;
   updatedProjects[projectId] = { citations };
   if (config.repository) {
@@ -176,3 +191,31 @@ const updatedMetrics = {
   projects: updatedProjects,
 };
 await writeFile(metricsPath, `${JSON.stringify(updatedMetrics, null, 2)}\n`);
+
+// Keep the initial HTML and the no-JavaScript fallback in sync with the same data.
+const homepage = await readFile(homepagePath, "utf8");
+const updatedHomepage = homepage.replace(
+  /<a\b[^>]*\bdata-project-id="([^"]+)"[^>]*>[\s\S]*?<\/a>/g,
+  (link, projectId) => {
+    const metricName = link.includes("data-github-repo=")
+      ? "stars"
+      : link.includes('data-metric="downloads"') ? "downloads" : "citations";
+    const count = updatedProjects[projectId]?.[metricName];
+    if (!Number.isFinite(count)) return link;
+    const formattedCount = count.toLocaleString("en-US");
+    const unit = {
+      citations: "Google Scholar citations",
+      stars: "GitHub stars",
+      downloads: "Hugging Face downloads in the last 30 days",
+    }[metricName];
+    return link
+      .replace(/(<span class="resource-metric"[^>]*)(>)/, (_, attributes, end) => {
+        const updatedAttributes = attributes
+          .replace(/\s+hidden\b/g, "")
+          .replace(/aria-label="[^"]*"/, `aria-label="${formattedCount} ${unit}"`);
+        return `${updatedAttributes}${count > 0 ? "" : " hidden"}${end}`;
+      })
+      .replace(/(<span class="metric-value">)[\s\S]*?(<\/span>)/, `$1${formattedCount}$2`);
+  }
+);
+if (updatedHomepage !== homepage) await writeFile(homepagePath, updatedHomepage);
